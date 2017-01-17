@@ -76,7 +76,7 @@ module Playgroundbook
       Dir.mkdir(SharedResourcesDirectoryName) unless Dir.exist?(SharedResourcesDirectoryName)
 
       resource_names.each do |resource|
-        FileUtils.cp("../../../../#{resource}", SharedResourcesDirectoryName)
+        FileUtils.copy_entry("../../../../#{resource}", SharedResourcesDirectoryName)
       end
     end
   end
