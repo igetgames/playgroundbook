@@ -15,9 +15,20 @@ module Playgroundbook
       contents_with_import += "//#-end-hidden-code\n"
       contents_with_import += @page_processor.strip_extraneous_newlines(page_contents)
 
+      live_view_match = @page_processor.extract_live_view(contents_with_import)
+
+      live_view = live_view_match[:live_view]
+      stripped_content = live_view_match[:purged_content]
+
       Dir.chdir(page_dir_name) do
         File.open(ContentsSwiftFileName, "w") do |file|
-          file.write(contents_with_import)
+          file.write(stripped_content)
+        end
+
+        if live_view
+          File.open(LiveViewSwiftFileName, "w") do |file|
+            file.write(live_view)
+          end
         end
 
         File.open(MANIFEST_FILE_NAME, "w") do |file|

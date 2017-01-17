@@ -5,6 +5,7 @@ require "wrapper/markdown_wrapper"
 module Playgroundbook
   ManifestFileName = "Manifest.plist".freeze
   ContentsSwiftFileName = "Contents.swift".freeze
+  LiveViewSwiftFileName = "LiveView.swift".freeze
   ResourcesDirectoryName = "Resources".freeze
   PagesDirectoryName = "Pages".freeze
   SourcesDirectoryName = "Sources".freeze
